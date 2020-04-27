@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <h1>System Reports</h1>
+  <hr>
+    <div class="form-group">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let x of item5; let i= index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{x.date | date : "medium"}}</td>
+            <td>{{x.userID}}</td>
+            <td>{{x.report}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="exitSys()">logout</button>
+</div>

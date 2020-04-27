@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <h1>Sign up page</h1>
+  <h2>Enter your information</h2>
+  <form #userForm='ngForm'  (ngSubmit)="completeCreate()">
+    <hr>
+    <div class="container">
+      <div class="form-group">
+        <label for="name">Username </label>
+        <input type="text" name="name" class="form-control" id="name"
+        required [(ngModel)]="user1.username" #name="ngModel" placeholder="username">
+      </div>
+      <div [hidden]="name.valid || name.pristine"
+               class="alert alert-danger">
+            Name is required
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control" id="password"
+        required [(ngModel)]="user1.password" #password="ngModel" placeholder="password">
+      </div>
+      <div [hidden]="password.valid || password.pristine"
+               class="alert alert-danger">
+            Password is required
+      </div>
+      <div class="form-group">
+        <label for="password2">Password2 </label>
+        <input type="password" name="password2" class="form-control" id="password2"
+        required [(ngModel)]="user1.password2" #password2="ngModel" placeholder="Confirm password">
+      </div>
+      <div [hidden]="password2.valid || password2.pristine"
+               class="alert alert-danger">
+            Password2 is required
+      </div>
+      <div [hidden]="password2.value == password.value"
+               class="alert alert-danger">
+           Both passwords dont match. Please try again.
+      </div>
+      <div class="form-group">
+        <label for="email">email</label>
+        <input type="email" name="email" class="form-control" id="email"
+        required [(ngModel)]="user1.email" #email="ngModel" placeholder="email">
+      </div>
+      <div [hidden]="email.valid || email.pristine"
+               class="alert alert-danger">
+            Email is required
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" [disabled]="!userForm.form.valid">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

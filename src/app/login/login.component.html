@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <h1>Login Form</h1>
+  <form #userForm='ngForm'  (ngSubmit)="checkLogin1()">
+    <hr>
+    <div class="form-group">
+      <label for="name">Username/Admin :</label>
+      <input type="text" name="name" class="form-control" id="name"
+      required [(ngModel)]="user1.username" #name="ngModel">
+    </div>
+    <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Name is required
+    </div>
+    <div>
+      <div class="form-group">
+        <label for="password">Password :</label>
+        <input type="password" name="password" class="form-control" id="password"
+        required [(ngModel)]="user1.password" #password="ngModel">
+      </div>
+      <div [hidden]="password.valid || password.pristine"
+               class="alert alert-danger">
+            Password is required
+      </div>
+      <div class="form-group">
+      <button class="btn btn-primary" type="submit" [disabled]="!userForm.form.valid"> Login</button>
+      </div>
+
+    </div>
+    <hr>
+    <button id="forget" style="margin:10px;"(click)="routeToForgot()" mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>Forgot Password</button>
+    <button id="create" style="margin:10px;"(click)="routeToCreate()" mdbBtn type="button" color="info" outline="true" mdbWavesEffect>Create user</button>
+  </form>
+  <div *ngIf="showError">
+    <h3>Your username and password does not match with the records.Please try again.</h3>
+  </div>
+</div>
+

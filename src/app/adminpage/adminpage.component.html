@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <h1>User Reports</h1>
+  <hr>
+    <div class="form-group">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let x of item4; let i= index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{x.date | date : "medium"}}</td>
+            <td>{{x.userID}}</td>
+            <td>{{x.report}}</td>
+            <td><button class="btn btn-primary" type="submit" (click)="adminAccept(i)"> Accept</button></td>
+            <td><button class="btn btn-primary" type="submit" (click)="adminEdit(i)">  Edit</button></td>
+            <td><button class="btn btn-primary" type="submit" (click)="adminDelete(i)"> Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <button style="margin:10px;" class="btn btn-primary" type="submit" (click)="exitAdmin()"> System</button>
+      <button style="margin:10px;" class="btn btn-primary" type="submit" (click)="exitLogout()"> Logout</button>
+    </div>
+</div>
+
+<div *ngIf="showEdit">
+  <div class="form-group">
+    <label for="Report" style="margin:10px;">Please edit the report :</label>
+    <input type="Report" name="Report" class="form-control" id="Report"
+    required [(ngModel)]="editedReport" #name="ngModel" >
+  </div>
+  <div [hidden]="name.valid || name.pristine"
+           class="alert alert-danger">
+        Report is required
+  </div>
+  <hr>
+   <button style="margin:10px;" class="btn btn-primary" type="submit" (click)="completeEdit()">Completed</button>
+</div>
+
+
+
+
+
